@@ -1,0 +1,71 @@
+<article class="card-body mx-auto" style="max-width: 400px;">
+  <!--  <h4 class="card-title mt-3 text-center text-info">Create Account</h4>-->
+  <p class="text-center text-info">Get started with your free account</p>
+  <form [formGroup]="registerForm">
+    <label class="col text-info">User Name
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+        </div>
+        <input name="managerUsername" formControlName="managerUsername" class="form-control" placeholder="User Name" type="text">
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('managerUsername').invalid &&registerForm.get('managerUsername').touched">
+          Name invalid(must longer 2 and smaller 50 character)
+        </div>
+      </div> <!-- form-group// -->
+    </label>
+
+    <label class="col text-info"> Password
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+
+        <input class="form-control" placeholder="Password" type="password"
+               name="managerPassword" formControlName="managerPassword" #password>
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('managerPassword').invalid &&registerForm.get('managerPassword').touched">
+          Password invalid(must longer 6 and smaller 100 character)
+        </div>
+      </div> <!-- form-group// -->
+    </label>
+
+    <label class="col text-info"> Confirm Password
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+        </div>
+
+        <input class="form-control" placeholder="Confirm Password" type="password"
+               name="confirmPassword" formControlName="confirmPassword" #ch>
+        <div class="alert alert-warning" role="alert" *ngIf="ch.value !='' && ch.value!= password.value || registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched">
+          The password is not the same, please try it one more time!
+        </div>
+      </div> <!-- form-group// -->
+    </label>
+
+    <label class="col text-info">Name
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+        </div>
+
+        <input name="email text-info" formControlName="managerName" class="form-control" placeholder="managerName" type="text">
+        <div class="alert alert-warning" role="alert"
+             *ngIf="registerForm.get('managerName').invalid &&registerForm.get('managerName').touched">
+          Email invalid(must smaller 50 character)
+        </div>
+      </div> <!-- form-group// -->
+    </label>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-info btn-block" (click)="ch.value == password.value && signUp()"> Create Account</button>
+      <div *ngIf="isSignFailed" class="alert alert-warning">
+        Signup failed!<br/>{{errorMessage}}
+      </div>
+    </div> <!-- form-group// -->
+<!--    <p class="text-center">Have an account? <a [routerLink]="'/login'">Log In</a></p>-->
+  </form>
+</article>
+
+
