@@ -58,6 +58,18 @@
       </div> <!-- form-group// -->
     </label>
 
+
+    <div class="form-check form-check-inline col">ROLE:
+      &nbsp;
+      <input type="checkbox" class="form-check-input" id="staff">
+      <label class="form-check-label" for="staff">STAFF</label>
+      &nbsp;
+      <input type="checkbox" class="form-check-input" id="manager">
+      <label class="form-check-label" for="manager">MANAGER</label>
+    </div>
+
+    &nbsp;
+
     <div class="form-group">
       <button type="submit" class="btn btn-info btn-block" (click)="ch.value == password.value && signUp()"> Create Account</button>
       <div *ngIf="isSignFailed" class="alert alert-warning">
@@ -67,5 +79,3 @@
 <!--    <p class="text-center">Have an account? <a [routerLink]="'/login'">Log In</a></p>-->
   </form>
 </article>
-
-
